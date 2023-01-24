@@ -74,7 +74,7 @@ export const Cards: React.FunctionComponent<CardsProps> = (props) => {
             id={item.id}
             year={item.year}
             color={item.color}
-            pantone_value={item.pantone_value}
+            // pantone_value={item.pantone_value}
             name={item.name}
             key={index}
           />
