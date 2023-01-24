@@ -1,0 +1,23 @@
+.loader {
+  background-color: white;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.circle {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  border: 10px solid rgba(255, 255, 255);
+  border-top: 10px solid #8d6095;
+  animation: animate 1.5s infinite linear;
+}
+
+@keyframes animate {
+  0% {
+    transform: translate(-20%, 50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-20%, 50%) rotate(360deg);
+  }
+}
