@@ -1,0 +1,24 @@
+.color_card {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  width: 390px;
+  border: 2px solid rgb(237, 234, 234);
+  border-radius: 15px;
+  box-shadow: 7px 5px 10px 5px rgb(218, 215, 215);
+  padding: 15px;
+  cursor: pointer;
+
+}
+p {
+  margin: 0;
+}
+.name {
+  font-size: 19px;
+  text-decoration: underline;
+}
+.color_info_wrapper {
+  display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
