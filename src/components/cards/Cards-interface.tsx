@@ -4,7 +4,7 @@ import { ColorData } from "store/Use-reducer";
 
 export interface CardsProps {
   className?: string;
-  getColorFilterById: (item: string) => void;
+  getColorFilterById: (item: number) => void;
   searchString: string;
 }
 export interface CardsState {

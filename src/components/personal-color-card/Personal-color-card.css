@@ -1,0 +1,20 @@
+.personal_color_card {
+  display: flex;
+  flex-direction: column;
+  width: 230px;
+  border: 2px solid rgb(237, 234, 234);
+  border-radius: 15px;
+  box-shadow: 7px 5px 10px 5px rgb(218, 215, 215);
+  padding: 15px;
+  cursor: pointer;
+  color: #6184a3;
+}
+.color_link {
+  color: #6184a3;
+}
+.close-icon {
+  position: absolute;
+  left: 200px;
+  z-index: 200;
+  top: 120px;
+}

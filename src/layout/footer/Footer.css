@@ -3,12 +3,11 @@
     padding: 10px;
     text-align: right;
     color:white;
-    /* background-image:  url(../../assets/image/book.jpg); */
     background-position-y: bottom;
     background-size: inherit;
-    color: aqua;
+ 
 }
 .footer_link{
     font-size: 20px;
-    
+    color: #c6eb8e;
 }

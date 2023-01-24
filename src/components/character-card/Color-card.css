@@ -1,7 +1,7 @@
 .color_card {
   display: flex;
   flex-direction:column;
-  width: 230px;
+  width: 370px;
   border: 2px solid rgb(237, 234, 234);
   border-radius: 15px;
   box-shadow: 7px 5px 10px 5px rgb(218, 215, 215);
@@ -9,6 +9,9 @@
   cursor: pointer;
   color: aliceblue;
 
+}
+.color_info_wrapper {
+  z-index: 100;
 }
 p {
   margin: 0;

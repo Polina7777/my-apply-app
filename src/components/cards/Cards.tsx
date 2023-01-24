@@ -52,7 +52,7 @@ export const Cards: React.FunctionComponent<CardsProps> = (props) => {
   }, []);
 
   if (isLoading) {
-    return <Loader aria-label="character-card-loader" />;
+    return <Loader aria-label="color-card-loader" />;
   }
 
   return (
@@ -68,9 +68,9 @@ export const Cards: React.FunctionComponent<CardsProps> = (props) => {
         {info.colors.map((item:ColorData, index: number) => (
           <ColorCard
             aria-label="character-card"
-            // getColorFilterById={() => {
-            //   props.getColorFilterById(item.id);
-            // }}
+            getColorFilterById={() => {
+              props.getColorFilterById(item.id);
+            }}
             id={item.id}
             year={item.year}
             color={item.color}

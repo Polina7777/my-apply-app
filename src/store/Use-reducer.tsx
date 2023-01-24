@@ -11,28 +11,26 @@ export interface ColorData {
 }
 
 export interface AppContext {
- 
   colors: ColorData[];
 }
 export type SliceState = {
-
-  colors: ColorData [];
+  colors: ColorData[];
+  color: ColorData;
 };
 export const initialState = {
   colors: [],
-
-} as SliceState;
-
+  color: {},
+} as unknown as SliceState;
 
 export const SecondReducer = (state = initialState, action: AnyAction) => {
   if (!state) {
     return initialState;
   }
   switch (action.type) {
- 
     case "getAllColors":
       return { ...state, colors: action.payload };
-
+      case "getColorById":
+        return { ...state, color: action.payload };
     // case "changePage":
     //   return { ...state, api: { ...state.api, page: action.payload } };
     // case "getCharacter":

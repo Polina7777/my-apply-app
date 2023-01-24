@@ -3,8 +3,8 @@
 export const actionGetAllColors = (payload:{}) => {
   return { type: 'getAllColors', payload };
 };
-export const actionGetCharacterById = (payload:{}) => {
-  return { type: 'getCharacterById', payload };
+export const actionGetColorById = (payload) => {
+  return { type: 'getColorById', payload };
 };
 export const actionGetAllEpisodes = (payload:{}) => {
   return { type: 'getAllEpisodes', payload };

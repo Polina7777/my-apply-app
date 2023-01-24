@@ -6,7 +6,7 @@ export const ColorCard: React.FunctionComponent<ColorCardProps> = (props) => {
   return (
     <div className="color_card">
       <div
-        // onClick={props.getCharacterFilterById}
+        onClick={props.getColorFilterById}
         aria-label="filtered-click"
         className="color_info_wrapper"
       >
