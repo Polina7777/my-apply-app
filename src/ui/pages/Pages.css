@@ -1,0 +1,22 @@
+.pages {
+  display: flex;
+  align-self: self-end;
+  position: absolute;
+  left: 47%;
+  font-size: 20px;
+  font-weight: 600;
+  color: rgb(162, 119, 191);
+  margin-top: 10px;
+  gap:20px;
+}
+.set-page {
+  font-size: 20px;
+  color: rgb(162, 119, 191);
+  background-color: rgba(155, 39, 176, 0.121);
+  border: 1px solid rgb(162, 119, 190);
+  border-radius: 27px;
+  cursor: pointer;
+  width: 90px;
+  text-align: center;
+  padding-left:15px;
+}
