@@ -1,20 +1,22 @@
 import React from 'react';
-import { SearchBarProps } from './Search-bar-interface';
-import SearchButton from 'api/api-ui/search-button/Search-button';
-import SearchInput from 'api/api-ui/search-input/Search-input';
+// import { SearchBarProps } from './Search-bar-interface';
+import SearchInput from '../../ui/search-input/Search-input';
+import SearchButton from '../../ui/search-button/Search-button';
 import './Search-bar.css';
-import { useAppSelector, useTypedDispatch } from 'store/Hooks';
+// import { useAppSelector, useTypedDispatch } from 'store/Hooks';
 
-export const SearchBar: React.FunctionComponent<SearchBarProps> = () => {
-  const data = useAppSelector((state) => state.info);
-  const dispatch = useTypedDispatch();
+const SearchBar = () => {
+  // const data = useAppSelector((state) => state.info);
+  // const dispatch = useTypedDispatch();
   const dispatchHandler = (value: string) => {
-    dispatch({ type: 'updateString', payload: value });
+    // dispatch({ type: 'updateString', payload: value });
+    console.log('SearchBar')
   };
   return (
     <div className="search-bar">
-      <SearchInput value={data.api.searchString} handleChange={dispatchHandler} />
+      <SearchInput  handleChange={dispatchHandler} value={'Searchbar'} />
       <SearchButton />
     </div>
   );
 };
+export default SearchBar;
