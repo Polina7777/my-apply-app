@@ -1,14 +1,14 @@
-import React from 'react';
-import { FooterProps } from './Footer-interface';
-import './Footer.css';
+import React from "react";
+// import { FooterProps } from "./Footer-interface";
+import "./Footer.css";
 
-class Footer extends React.Component<FooterProps> {
-  render() {
-    return (
-      <footer className="footer">
-        {<span className="footer_text"> React.Component by Polina7777</span>}
-      </footer>
-    );
-  }
-}
+const Footer = () => {
+  return (
+    <footer className="footer">
+      <a className="footer_link" href="https://github.com/Polina7777">
+        Created by Polina7777
+      </a>
+    </footer>
+  );
+};
 export default Footer;
