@@ -1,0 +1,37 @@
+.header {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  text-align: center;
+  font-size: 70px;
+  padding: 3px 0;
+  font-weight: 700;
+  color: white;
+  background-image: url(../../assets/image/book.jpg);
+  background-position-y: bottom;
+  background-size: cover;
+}
+.header_title {
+  margin: 0;
+  font-size: 65px;
+}
+.header_text {
+  display: flex;
+  flex-direction: column;
+}
+.links {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 30px;
+}
+
+.about-us,
+.form-page_link,
+.api-page_link,
+.book {
+  font-size: 20px;
+  font-weight: 500;
+  padding: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+}
