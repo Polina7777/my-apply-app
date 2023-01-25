@@ -16,12 +16,14 @@ export interface AppContext {
 export type SliceState = {
   colors: ColorData[];
   color: ColorData;
-  searchString:''
+  searchString:'';
+  page:number
 };
 export const initialState = {
   colors: [],
   color: {},
-  searchString:''
+  searchString:'',
+  page:null
 } as unknown as SliceState;
 
 export const SecondReducer = (state = initialState, action: AnyAction) => {
@@ -35,8 +37,9 @@ export const SecondReducer = (state = initialState, action: AnyAction) => {
         return { ...state, color: action.payload };
         case "getSearchString":
           return { ...state, searchString: action.payload };
-    // case "changePage":
-    //   return { ...state, api: { ...state.api, page: action.payload } };
+          case "changePage":
+            return { ...state, page: action.payload };
+
     // case "getCharacter":
     //   return {
     //     ...state,

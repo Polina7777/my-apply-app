@@ -31,7 +31,7 @@ const GeneralPage = () => {
     <div className="general_page">
     <Routes>
       <Route path="" element={<Cards
-          searchString={""}
+         value={info.searchString}
           getColorFilterById={onGetColorFromServerById}
         />}/>
      

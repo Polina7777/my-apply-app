@@ -6,9 +6,10 @@ import "./Cards.css";
 import { useAppSelector, useAsyncTypedDispatch } from "store/Hooks";
 import { actionClearAll, actionGetAllColors } from "store/Actions";
 import { AsyncDispatch } from "store/Store";
-import ColorCard from "components/character-card/Color-card";
+import ColorCard from "components/color-card/Color-card";
 import Loader from "ui/loader/Loader";
 import { ColorData } from "store/Use-reducer";
+import Pagination from "ui/pagination/Pagination";
 
 export const Cards: React.FunctionComponent<CardsProps> = (props) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -20,12 +21,12 @@ export const Cards: React.FunctionComponent<CardsProps> = (props) => {
 
   const getColorListFromServer = () => {
     return async (dispatch: AsyncDispatch) => {
-      await fetch(`https://reqres.in/api/products`)
+      await fetch(`https://reqres.in/api/products/?name=${info.searchString}/?page=${info.page}`)
         .then((response) => response.json())
         .then((data) => {
           console.log(data)
           if (!data.error) {
-            // setMaxPage(data.info.pages);
+            setMaxPage(data.pages);
             dispatch(actionGetAllColors(data.data));
             setIsLoading(false);
           } else {
@@ -49,19 +50,22 @@ export const Cards: React.FunctionComponent<CardsProps> = (props) => {
     return () => {
       clearTimeout(handler);
     };
-  }, []);
+  }, [info.searchString]);
+
+
 
   if (isLoading) {
     return <Loader aria-label="color-card-loader" />;
   }
 
   return (
-    // <Pagination
-    //   aria-label="character-card-pagination"
-    //   page={info.api.page}
-    //   isLoading={isLoading}
-    //   maxPage={maxPage}
-    // >
+
+    <Pagination
+      aria-label="color-card-pagination"
+      page={info.page}
+      isLoading={isLoading}
+      maxPage={maxPage}
+    >
     <div>
     
       <div id="card" className={info.colors.length ? "cards-full" : "cards"}>
@@ -82,7 +86,7 @@ export const Cards: React.FunctionComponent<CardsProps> = (props) => {
       </div>
       {/* <Pages page={info.api.page} maxPage={maxPage} /> */}
     </div>
-    // </Pagination>
+    </Pagination>
   );
 };
 

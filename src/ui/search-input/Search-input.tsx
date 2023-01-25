@@ -7,9 +7,9 @@ export const SearchInput: React.FunctionComponent<SearchInputProps> = (props) =>
     <input
       aria-label="search-input"
       onChange={(event) => props.handleChange(event.target.value)}
-      type="search"
+      type="number"
       value={props.value}
-      className="search-input"
+      className="search_input"
       placeholder="Search..."
     />
   );

@@ -1,4 +1,4 @@
-.search-input {
+.search_input {
   width: 300px;
   font-size: 18px;
   padding: 7px 14px;
@@ -8,4 +8,11 @@
 
 input::placeholder {
   color: rgb(162, 119, 191);
+}
+
+.search_input { 
+  -moz-appearance: textfield;
+}
+.search_input::-webkit-inner-spin-button { 
+  display: none;
 }
