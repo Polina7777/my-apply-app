@@ -1,13 +1,12 @@
-// import { Data } from 'api/api-layout/general-api-page/General-api-page-interface';
 
 export const actionGetAllColors = (payload:{}) => {
   return { type: 'getAllColors', payload };
 };
-export const actionGetColorById = (payload) => {
+export const actionGetColorById = (payload:{}) => {
   return { type: 'getColorById', payload };
 };
-export const actionGetAllEpisodes = (payload:{}) => {
-  return { type: 'getAllEpisodes', payload };
+export const actionGetSearchString = (payload:'') => {
+  return { type: 'getSearchString', payload };
 };
 export const actionGetAllLocations = (payload:{}) => {
   return { type: 'getAllLocations', payload };
