@@ -21,8 +21,9 @@ export const Cards: React.FunctionComponent<CardsProps> = (props) => {
   const thunkDispatch = useAsyncTypedDispatch();
 
   const getColorListFromServer = () => {
+    console.log(props.value,info.searchString)
+    if(!info.searchString){
     return async (dispatch: AsyncDispatch) => {
-      // await fetch(`https://reqres.in/api/products/?name=${info.searchString}/?page=${info.page}`)
       await fetch(`https://reqres.in/api/products/?page=${info.page}`)
         .then((response) => response.json())
         .then((data) => {
@@ -36,7 +37,24 @@ export const Cards: React.FunctionComponent<CardsProps> = (props) => {
             dispatch(actionClearAll());
           }
         });
-    };
+    };}else {
+      return async (dispatch: AsyncDispatch) => {
+        await fetch(`https://reqres.in/api/products/?pantone_value=${info.searchString}`)
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            if (!data.error) {
+              console.log(data)
+              setMaxPage(data.total_pages);
+              dispatch(actionGetAllColors(data.data));
+              setIsLoading(false);
+            } else {
+              setIsLoading(false);
+              dispatch(actionClearAll());
+            }
+          });
+      };
+    }
   };
 
   const onGetColorListFromServer = () => {

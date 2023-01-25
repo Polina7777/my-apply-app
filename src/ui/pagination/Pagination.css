@@ -16,6 +16,7 @@
   line-height: 10px;
   color: #8d6095;
   transition: transform 1s ease-out;
+  padding: 10px;
 }
 .arrow:hover {
   transform: scale(1.3);

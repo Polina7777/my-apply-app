@@ -11,12 +11,10 @@ const SearchBar = () => {
   const dispatch = useTypedDispatch();
   const dispatchHandler = (value: string) => {
     dispatch({ type: 'getSearchString', payload: value });
-    console.log(value)
   };
   return (
     <div className="search-bar">
       <SearchInput  handleChange={dispatchHandler} value={data.searchString} />
-      <SearchButton />
     </div>
   );
 };

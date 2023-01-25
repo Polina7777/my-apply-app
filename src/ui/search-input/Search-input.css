@@ -2,13 +2,14 @@
   width: 300px;
   font-size: 18px;
   padding: 7px 14px;
-  border: 1px solid rgb(162, 119, 190);
+  border: 2px solid rgb(203, 187, 213);
   border-radius: 20px;
+  width: 90%;
+  color: rgb(124, 99, 141);
 }
 
-input::placeholder {
-  color: rgb(162, 119, 191);
-}
+
+input {outline: 0 !important;}
 
 .search_input { 
   -moz-appearance: textfield;
