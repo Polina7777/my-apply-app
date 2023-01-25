@@ -7,10 +7,12 @@
     transition: all 0.3s ease-in-out;
     overflow: hidden;
     z-index: 999;
+    justify-content: center;
   }
   .portal_content {
     position: absolute;
     z-index: 1;
+    align-self: center;
   }
   .portal_background {
     position: absolute;
