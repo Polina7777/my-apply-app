@@ -1,13 +1,14 @@
 import React from "react";
 import "./Personal-color-card.css";
 import { useAppSelector } from "store/Hooks";
-import { ReactComponent as CloseIcon } from "../../assets/image/close.svg";
-import { useNavigate } from "react-router-dom";
+import Portal from "components/portal/Portal";
+import { PersonalColorCardProps } from "./Personal-color-card-interface";
 
-export const PersonalColorCard: React.FunctionComponent = (props) => {
-  const navigation = useNavigate();
+export const PersonalColorCard: React.FunctionComponent<PersonalColorCardProps> = (props) => {
   const info = useAppSelector((state) => state.info.color);
+
   return (
+    <Portal  wrapperId={"personal-color-card_wrapper"} isOpen={props.isOpen} closeHandler={props.closeHandler}>
     <div className="personal_color_card">
       <div aria-label="filtered-click" className="color_info_wrapper">
         <div
@@ -37,13 +38,8 @@ export const PersonalColorCard: React.FunctionComponent = (props) => {
           </p>
         </div>
       </div>
-
-      <CloseIcon
-        aria-label="closeModal"
-        onClick={() => navigation("/")}
-        className="close-icon"
-      />
     </div>
+    </Portal>
   );
 };
 export default PersonalColorCard;

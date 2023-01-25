@@ -9,7 +9,7 @@ export interface CardsProps {
 }
 export interface CardsState {
   colors: ColorData[];
-  searchString:'';
+  searchString: "";
   page: number;
   personalColorData: ColorData | null;
   isLoading: boolean;

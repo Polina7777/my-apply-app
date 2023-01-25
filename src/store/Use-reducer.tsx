@@ -23,7 +23,7 @@ export const initialState = {
   colors: [],
   color: {},
   searchString:'',
-  page:null
+  page:1
 } as unknown as SliceState;
 
 export const SecondReducer = (state = initialState, action: AnyAction) => {

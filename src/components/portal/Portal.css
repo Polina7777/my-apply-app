@@ -1,0 +1,26 @@
+.portal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+    z-index: 999;
+  }
+  .portal_content {
+    position: absolute;
+    z-index: 1;
+  }
+  .portal_background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+  .portal_background_black {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+  .portal_background_transparent {
+    background-color: transparent;
+  }

@@ -3,7 +3,6 @@
   flex: 1;
   display: flex;
   justify-content: center;
-  height: 100%;
 }
 .circle {
   width: 130px;
