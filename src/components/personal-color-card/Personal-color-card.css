@@ -4,7 +4,7 @@
   width: 210px;
   border: 2px solid rgb(237, 234, 234);
   border-radius: 15px;
-  box-shadow: 7px 5px 10px 5px rgb(218, 215, 215);
+  box-shadow: 7px 5px 10px 5px rgb(236, 231, 231);
   padding: 15px;
   cursor: pointer;
   color: #6184a3;
@@ -19,4 +19,9 @@
   left: 180px;
   z-index: 200;
   top: 123px;
+}
+.color_info_wrapper{
+  display: flex;
+    flex-direction: column;
+    align-items: center;
 }

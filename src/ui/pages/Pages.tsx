@@ -6,12 +6,11 @@ import './Pages.css';
 
 export const Pages: React.FunctionComponent<PagesProps> = (props) => {
   const data = useAppSelector((state) => state.info);
-  const dispatch = useTypedDispatch();
 
   return (
     <div className="pages">
       <p className="pages-number">
-        {`${data.page} from ${props.maxPage}  `}
+        {data.colors.length > 4 || data.colors.length !== 1 ? `${data.page} from ${data.maxPage}`:`1 from 1`}
         </p>
     </div>
   );

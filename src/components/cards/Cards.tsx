@@ -4,57 +4,57 @@ import { CardsProps } from "./Cards-interface";
 import "./Cards.css";
 
 import { useAppSelector, useAsyncTypedDispatch } from "store/Hooks";
-import { actionClearAll, actionGetAllColors } from "store/Actions";
+import {
+  actionClearAll,
+  actionGetAllColors,
+  actionSetMaxPage,
+} from "store/Actions";
 import { AsyncDispatch } from "store/Store";
 import ColorCard from "components/color-card/Color-card";
 import Loader from "ui/loader/Loader";
 import { ColorData } from "store/Use-reducer";
 import Pagination from "ui/pagination/Pagination";
 import Pages from "ui/pages/Pages";
+import ErrorPage from "layout/error-page/Error-page";
 
 export const Cards: React.FunctionComponent<CardsProps> = (props) => {
-  const [isLoading, setIsLoading] = useState(false);
-
-  const [maxPage, setMaxPage] = useState(1);
-
   const info = useAppSelector((state) => state.info);
   const thunkDispatch = useAsyncTypedDispatch();
+  const [isLoading, setIsLoading] = useState(false);
 
   const getColorListFromServer = () => {
-    console.log(props.value,info.searchString)
-    if(!info.searchString){
     return async (dispatch: AsyncDispatch) => {
-      await fetch(`https://reqres.in/api/products/?page=${info.page}`)
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-          if (!data.error) {
-            setMaxPage(data.total_pages);
-            dispatch(actionGetAllColors(data.data));
-            setIsLoading(false);
-          } else {
-            setIsLoading(false);
-            dispatch(actionClearAll());
-          }
-        });
-    };}else {
-      return async (dispatch: AsyncDispatch) => {
-        await fetch(`https://reqres.in/api/products/?pantone_value=${info.searchString}`)
-          .then((response) => response.json())
-          .then((data) => {
-            console.log(data);
-            if (!data.error) {
-              console.log(data)
-              setMaxPage(data.total_pages);
-              dispatch(actionGetAllColors(data.data));
-              setIsLoading(false);
-            } else {
-              setIsLoading(false);
-              dispatch(actionClearAll());
-            }
-          });
-      };
-    }
+      if (!info.searchString) {
+        try {
+          const responce = await fetch(
+            `https://reqres.in/api/products/?page=${info.page}&per_page=5`
+          );
+          const data = await responce.json();
+          dispatch(actionGetAllColors(data.data));
+          dispatch(actionSetMaxPage(data.total_pages));
+          setIsLoading(false);
+        } catch (error) {
+          setIsLoading(false);
+          dispatch(actionClearAll());
+          return <ErrorPage />;
+        }
+      } else {
+        try {
+          const responce = await fetch(
+            `https://reqres.in/api/products/?id=${info.searchString}&per_page=5`
+          );
+
+          const data = await responce.json();
+          dispatch(actionSetMaxPage(data.total_pages));
+          dispatch(actionGetAllColors(new Array(data.data)));
+          setIsLoading(false);
+        } catch (error) {
+          console.log(error);
+          setIsLoading(false);
+          dispatch(actionClearAll());
+        }
+      }
+    };
   };
 
   const onGetColorListFromServer = () => {
@@ -75,32 +75,36 @@ export const Cards: React.FunctionComponent<CardsProps> = (props) => {
   if (isLoading) {
     return <Loader aria-label="color-card-loader" />;
   }
-  return (
+
+  return info.colors.length ? (
     <Pagination
       aria-label="color-card-pagination"
       page={info.page}
       isLoading={isLoading}
-      maxPage={maxPage}
+      maxPage={info.maxPage}
     >
-      <div>
-        <div id="card" className={info.colors.length ? "cards-full" : "cards"}>
-          {info.colors.map((item: ColorData, index: number) => (
-            <ColorCard
-              aria-label="character-card"
-              getColorFilterById={() => {
-                props.getColorFilterById(item.id);
-              }}
-              id={item.id}
-              year={item.year}
-              color={item.color}
-              name={item.name}
-              key={index}
-            />
-          ))}
-        </div>
-        <Pages page={info.page} maxPage={maxPage} />
+      <div id="card" className={info.colors.length ? "cards-full" : "cards"}>
+        {info.colors.map((item: ColorData, index: number) => (
+    
+          <ColorCard
+            aria-label="character-card"
+            getColorFilterById={() => {
+              props.getColorFilterById(item.id);
+            }}
+            id={item.id}
+            year={item.year}
+            color={item.color}
+            name={item.name}
+            key={index}
+          />
+          
+        ))}
       </div>
+
+      <Pages page={info.page} maxPage={info.maxPage} />
     </Pagination>
+  ) : (
+    <ErrorPage />
   );
 };
 

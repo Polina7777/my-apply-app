@@ -1,9 +1,9 @@
 .pagination {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  height: 100%;
+  width: 100%;
 }
+
 
 .not-visible {
   display: none;
@@ -11,10 +11,6 @@
 .arrow {
   display: inline-block;
   cursor: pointer;
-  top: 35%;
-  font-size: 84px;
-  line-height: 10px;
-  color: #8d6095;
   transition: transform 1s ease-out;
   padding: 10px;
 }
@@ -25,6 +21,12 @@
   visibility: hidden;
 }
 
-.arrow.right {
+.arrow_right {
   right: 50%;
+  text-align-last: right;
 }
+.arrow_left{
+  text-align-last: right;
+  padding-right:40px;
+}
+

@@ -11,3 +11,7 @@ export const actionGetSearchString = (payload:'') => {
 export const actionClearAll = () => {
   return { type: 'clearAll' };
 };
+export const actionSetMaxPage = (payload:'')=>{
+  return{type:'setMaxPage',payload}
+}
+
