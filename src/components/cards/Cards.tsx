@@ -46,17 +46,15 @@ export const Cards: React.FunctionComponent<CardsProps> = (props) => {
 
           const data = await responce.json();
           dispatch(actionSetMaxPage(data.total_pages));
-          dispatch(actionGetAllColors(new Array(data.data)));
-          setIsLoading(false);
+          dispatch(actionGetAllColors(data));
         } catch (error) {
-          console.log(error);
           setIsLoading(false);
           dispatch(actionClearAll());
         }
       }
     };
   };
-
+ 
   const onGetColorListFromServer = () => {
     thunkDispatch(getColorListFromServer());
   };
@@ -85,7 +83,6 @@ export const Cards: React.FunctionComponent<CardsProps> = (props) => {
     >
       <div id="card" className={info.colors.length ? "cards-full" : "cards"}>
         {info.colors.map((item: ColorData, index: number) => (
-    
           <ColorCard
             aria-label="character-card"
             getColorFilterById={() => {
@@ -97,15 +94,14 @@ export const Cards: React.FunctionComponent<CardsProps> = (props) => {
             name={item.name}
             key={index}
           />
-          
         ))}
       </div>
 
       <Pages page={info.page} maxPage={info.maxPage} />
     </Pagination>
   ) : (
-    <ErrorPage />
+      <ErrorPage />
   );
 };
-
+  
 export default Cards;

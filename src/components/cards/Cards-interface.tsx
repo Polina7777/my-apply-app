@@ -1,4 +1,3 @@
-
 import { ColorData } from "store/Use-reducer";
 export interface CardsProps {
   className?: string;
