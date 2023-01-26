@@ -1,5 +1,3 @@
-// import { AnyAction } from '@reduxjs/toolkit';
-
 import { AnyAction } from "redux";
 
 export interface ColorData {

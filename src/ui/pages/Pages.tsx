@@ -1,6 +1,6 @@
 import React from 'react';
-import { useAppSelector, useTypedDispatch } from 'store/Hooks';
-// import { useAppSelector, useTypedDispatch } from 'store/Hooks';
+import { useAppSelector} from 'store/Hooks';
+
 import { PagesProps } from './Pages-interface';
 import './Pages.css';
 
