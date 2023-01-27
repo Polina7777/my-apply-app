@@ -8,9 +8,6 @@ export const actionGetColorById = (payload:{}) => {
 export const actionGetSearchString = (payload:'') => {
   return { type: 'getSearchString', payload };
 };
-export const actionClearAll = () => {
-  return { type: 'clearAll' };
-};
 export const actionSetMaxPage = (payload:'')=>{
   return{type:'setMaxPage',payload}
 }

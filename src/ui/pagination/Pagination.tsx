@@ -13,6 +13,7 @@ export const Pagination: React.FunctionComponent<PaginationProps> = (props) => {
   };
   const toRight = () => {
     dispatchHandler(data.page + 1);
+   
   };
   const toLeft = () => {
     if (data.page > 1) {

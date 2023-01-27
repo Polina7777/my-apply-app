@@ -4,11 +4,7 @@ import { CardsProps } from "./Cards-interface";
 import "./Cards.css";
 
 import { useAppSelector, useAsyncTypedDispatch } from "store/Hooks";
-import {
-  actionClearAll,
-  actionGetAllColors,
-  actionSetMaxPage,
-} from "store/Actions";
+import { actionGetAllColors, actionSetMaxPage } from "store/Actions";
 import { AsyncDispatch } from "store/Store";
 import ColorCard from "components/color-card/Color-card";
 import Loader from "ui/loader/Loader";
@@ -18,9 +14,11 @@ import Pages from "ui/pages/Pages";
 import ErrorPage from "layout/error-page/Error-page";
 
 export const Cards: React.FunctionComponent<CardsProps> = (props) => {
+  // window.location.pathname= 'colors';
   const info = useAppSelector((state) => state.info);
   const thunkDispatch = useAsyncTypedDispatch();
   const [isLoading, setIsLoading] = useState(false);
+  const[showErrorPage,setShowErorPage] = useState(false);
 
   const getColorListFromServer = () => {
     return async (dispatch: AsyncDispatch) => {
@@ -33,33 +31,41 @@ export const Cards: React.FunctionComponent<CardsProps> = (props) => {
           dispatch(actionGetAllColors(data.data));
           dispatch(actionSetMaxPage(data.total_pages));
           setIsLoading(false);
+          setShowErorPage(false);
         } catch (error) {
           setIsLoading(false);
-          dispatch(actionClearAll());
-          return <ErrorPage />;
+          return error;
         }
       } else {
         try {
           const responce = await fetch(
             `https://reqres.in/api/products/?id=${info.searchString}&per_page=5`
           );
-
           const data = await responce.json();
-          dispatch(actionSetMaxPage(data.total_pages));
-          dispatch(actionGetAllColors(data));
+          console.log(new Array(data).length);
+          if (Object.keys(data).length !== 0) {
+            dispatch(actionSetMaxPage(data.total_pages));
+            dispatch(actionGetAllColors(new Array(data)));
+            setIsLoading(false);
+            setShowErorPage(false);
+          }else{
+                 setIsLoading(false);
+                         setShowErorPage(true);
+          }
         } catch (error) {
           setIsLoading(false);
-          dispatch(actionClearAll());
+          return error;
         }
       }
     };
   };
- 
+
   const onGetColorListFromServer = () => {
     thunkDispatch(getColorListFromServer());
   };
 
   useEffect(() => {
+    // window.location.pathname = `colors?page=${info.page} `;
     setIsLoading(true);
     const handler = setTimeout(() => {
       onGetColorListFromServer();
@@ -68,13 +74,15 @@ export const Cards: React.FunctionComponent<CardsProps> = (props) => {
     return () => {
       clearTimeout(handler);
     };
-  }, [info.searchString, info.page]);
+  }, [info.searchString, info.page, showErrorPage]);
 
   if (isLoading) {
     return <Loader aria-label="color-card-loader" />;
   }
 
-  return info.colors.length ? (
+  return !showErrorPage ? (
+    // window.location.href= `https://colors/color/?id=${id}`;
+
     <Pagination
       aria-label="color-card-pagination"
       page={info.page}
@@ -100,8 +108,8 @@ export const Cards: React.FunctionComponent<CardsProps> = (props) => {
       <Pages page={info.page} maxPage={info.maxPage} />
     </Pagination>
   ) : (
-      <ErrorPage />
+    <ErrorPage />
   );
 };
-  
+
 export default Cards;
