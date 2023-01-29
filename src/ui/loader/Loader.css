@@ -4,6 +4,12 @@
   display: flex;
   justify-content: center;
 }
+.loader_wrapper{
+  height: 100%;
+  min-height: 100%;
+  width: 100%;
+ 
+}
 .circle {
   width: 130px;
   height: 130px;
@@ -11,6 +17,10 @@
   border: 10px solid rgba(255, 255, 255);
   border-top: 10px solid #8d6095;
   animation: animate 1.5s infinite linear;
+  top: 50%;
+    left: 45%;
+    position: absolute;
+    z-index: 1100;
 }
 
 @keyframes animate {

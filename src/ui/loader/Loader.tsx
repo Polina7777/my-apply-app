@@ -5,7 +5,7 @@ import "./Loader.css";
 export const Loader: React.FunctionComponent<{children:ReactNode}> = ({children}) => {
   const info = useAppSelector((state) => state.info);
   return (
-    <div>
+    <div className="loader_wrapper">
       {info.isLoading ? (
         <div className="loader">
           <div className="circle"></div>

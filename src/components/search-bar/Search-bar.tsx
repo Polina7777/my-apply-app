@@ -7,7 +7,7 @@ const SearchBar = () => {
   const data = useAppSelector((state) => state.info);
   const dispatch = useTypedDispatch();
   const dispatchHandler = (value: string) => {
-    dispatch({ type: 'getSearchString', payload: value });
+    dispatch({ type: 'setSearchString', payload: value });
   };
   return (
     <div className="search-bar">

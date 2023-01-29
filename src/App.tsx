@@ -6,12 +6,15 @@ import React from "react";
 import { Provider } from "react-redux";
 import store from "store/Store";
 import Loader from "ui/loader/Loader";
+
 function App() {
   return (
     <div className="app">
       <Provider store={store}>
         <Loader>
-          <Header /> <Main /> <Footer />
+          <Header />
+          <Main />
+          <Footer />
         </Loader>
       </Provider>
     </div>

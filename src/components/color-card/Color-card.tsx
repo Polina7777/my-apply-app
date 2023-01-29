@@ -4,7 +4,6 @@ import { ColorCardProps } from "./Color-card-interface";
 import "./Color-card.css";
 
 export const ColorCard: React.FunctionComponent<ColorCardProps> = (props) => {
-  const info = useAppSelector((state) => state.info);
   return (
     <div className="color_card">
       <div

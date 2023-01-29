@@ -8,7 +8,6 @@ export const PersonalColorCard: React.FunctionComponent<
   PersonalColorCardProps
 > = (props) => {
   const info = useAppSelector((state) => state.info.color);
-  //  window.location.hash= `color/?name=${info.name}`;  
   return (
  
     <Portal
