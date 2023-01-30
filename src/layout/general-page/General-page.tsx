@@ -10,6 +10,7 @@ const GeneralPage = () => {
   const thunkDispatch = useAsyncTypedDispatch();
   const [isOpenModal, setIsOpenModal] = useState(false);
 
+
   const showPersonalColorCard = () => {
     return setIsOpenModal(true);
   };
@@ -19,19 +20,24 @@ const GeneralPage = () => {
 
   const onGetColorFromServerById = (id: number) => {
     thunkDispatch(api.getColorById(id));
-    showPersonalColorCard();  
+    showPersonalColorCard();
   };
+  
 
   return (
+
     <div className="general_page">
-      <Cards
-        value={info.searchString}
-        getColorFilterById={onGetColorFromServerById}
-      />
-        <PersonalColorCard
-          isOpen={isOpenModal}
-          closeHandler={closePersonalColorCard}
-        />
+      
+          <Cards
+            value={info.searchString}
+            getColorFilterById={onGetColorFromServerById}
+          />
+    
+          <PersonalColorCard
+            isOpen={isOpenModal}
+            closeHandler={closePersonalColorCard}
+          />
+  
     </div>
   );
 };

@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-
+import React, { useEffect } from "react";
 import { CardsProps } from "./Cards-interface";
 import { useAppSelector, useAsyncTypedDispatch } from "store/Hooks";
 import { actionSetIsLoading } from "store/Actions";
@@ -16,43 +15,6 @@ export const Cards: React.FunctionComponent<CardsProps> = (props) => {
   const info = useAppSelector((state) => state.info);
   const thunkDispatch = useAsyncTypedDispatch();
   const dispatch = useDispatch();
-
-  // const getColorListFromServer = () => {
-  //   return async (dispatch: AsyncDispatch) => {
-  //     if (!info.searchString) {
-  //       try {
-  //         const responce = await fetch(
-  //           `https://reqres.in/api/products/?page=${info.page}&per_page=5`
-  //         );
-  //         if (responce.status === 200) {
-  //           const data = await responce.json();
-  //           dispatch(actionGetAllColors(data));
-  //         } else {
-  //           dispatch(actionSetIsLoading(false));
-  //           dispatch(actionSetErrorPage(true));
-  //         }
-  //       } catch (error) {
-  //         setIsLoading(false);
-  //         return error;
-  //       }
-  //     } else {
-  //       try {
-  //         const responce = await fetch(
-  //           `https://reqres.in/api/products/?id=${info.searchString}&per_page=5`
-  //         );
-  //         if (responce.status === 200) {
-  //           const data = await responce.json();
-  //           dispatch(actionGetColorBySearchString(new Array(data.data)));
-  //         } else {
-  //           dispatch(actionSetIsLoading(false));
-  //           dispatch(actionSetErrorPage(true));
-  //         }
-  //       } catch (error) {
-  //         return error;
-  //       }
-  //     }
-  //   };
-  // };
 
   const onGetColorListFromServer = () => {
     thunkDispatch(api.getColorList(info));
@@ -76,7 +38,6 @@ export const Cards: React.FunctionComponent<CardsProps> = (props) => {
     >
       <div
         id="card"
-        // className={info.colors.length ? "cards-full" : "cards"}
         className="cards-full"
       >
         {info.colors.map((item: ColorData, index: number) => (
